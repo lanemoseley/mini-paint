@@ -1,0 +1,43 @@
+3  Application closes cleanly either via upper right 'X' or <esc> key
+3  Left mouse downstroke draws red square at mouse location
+3  Typing a character from the keyboard draws the character at the cursor
+   location
+0  Code contains appropriate comments (headers, internal, etc.)
+
+Attention to detail
+1  Subdirectory named wa3
+1  Code is consistently formatted
+1  Code is readable
+1  Interface and implementation are separate
+1  Classes correctly use encapsulation and abstraction
+1  Resizing window behaves appropriately
+
+Bonus:
+1  Middle mouse draws a green square at the mouse location
+1  Right mouse draws a blue square at the mouse location
+1  Backspace key clears the display of previously drawn characters and squares
+
+Other things to consider:
+*  Does the program leak memory?  (use: valgrind --leak-check=full main)
+*  Does the program perform acceptably?
+*  No global variables
+-------------------------------------------------------------------------------
+19/16 (max 19)
+
+Notes:
+
+- you prevent identical shapes from being redrawn at the
+  same point.
+  - this means that the same point can have a square of
+    each color drawn on top of each other, but cannot have
+	a color redrawn until the canvas is cleared.
+  - This is fine for this assignment, but what if a user
+    wanted to recolor a space without clearing the canvas?
+	
+- valgrind detected memory leaks
+
+- code is almost entirely without comments, an example
+  of comments that could be useful is documenting the
+  fact that you test whether a shape has been placed at
+  a given location already.
+  
