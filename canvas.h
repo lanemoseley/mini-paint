@@ -41,12 +41,10 @@ class Canvas
 public:
     Canvas( );
     void addCharacter( char ch, int x, int y, const float color[ ] );
-    void addRectangle( float x1, float y1, float x2, float y2,
-                                  const float color[ ] );
+    void addRectangle( float x1, float y1, float x2, float y2, const float color[ ] );
     void clearCanvas( );
     void DrawCharacter( char ch, int x, int y, const float color[ ] );
-    void DrawFilledRectangle( float x1, float y1, float x2, float y2,
-                              const float color[ ] );
+    void DrawFilledRectangle( float x1, float y1, float x2, float y2, const float color[ ] );
     void redrawWindow( );
 };
 
