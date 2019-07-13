@@ -35,7 +35,7 @@ void Canvas::DrawFilledRectangle( float x1, float y1, float x2, float y2, const 
 void Canvas::redrawWindow( )
 {
     unsigned int i;
-    
+
     for ( i = 0; i < characters.size( ); ++i )
     {
         DrawCharacter( characters[ i ].theCharacter, characters[ i ].x,

@@ -28,7 +28,7 @@ class Canvas
         float y2;
         float color[ 3 ];
 
-        rectangle( const float Color[], float X1, float X2, float Y1, float Y2 ) : x1( X1 ), x2( X2 ), y1( Y1 )
+        rectangle( const float Color[], float X1, float X2, float Y1, float Y2 ) : x1( X1 ), x2( X2 ), y1( Y1 ), y2(Y2)
         {
             for ( int i = 0; i < 3; ++i )
                 color[ i ] = Color[ i ];

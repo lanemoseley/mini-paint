@@ -31,8 +31,7 @@ void KeyboardEvent::doAction( Canvas &canvas )
     
     else
     {
-        canvas.DrawCharacter( key, xLoc, glutGet( GLUT_WINDOW_HEIGHT ) - yLoc,
-                              White );
+        canvas.addCharacter( key, xLoc, glutGet( GLUT_WINDOW_HEIGHT ) - yLoc, White );
         canvas.redrawWindow( );
         glutSwapBuffers( );
     }
@@ -44,7 +43,7 @@ void MouseClickEvent::doAction( Canvas &canvas )
 {
     if ( button == GLUT_LEFT_BUTTON && state == GLUT_DOWN )
     {
-        canvas.DrawFilledRectangle( xLoc + 5,
+        canvas.addRectangle( xLoc + 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 5, xLoc - 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Red );
         canvas.redrawWindow( );
@@ -53,7 +52,7 @@ void MouseClickEvent::doAction( Canvas &canvas )
     
     if ( button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN )
     {
-        canvas.DrawFilledRectangle( xLoc + 5,
+        canvas.addRectangle( xLoc + 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 5, xLoc - 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Blue );
         canvas.redrawWindow( );
@@ -62,7 +61,7 @@ void MouseClickEvent::doAction( Canvas &canvas )
     
     if ( button == GLUT_MIDDLE_BUTTON && state == GLUT_DOWN )
     {
-        canvas.DrawFilledRectangle( xLoc + 5,
+        canvas.addRectangle( xLoc + 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 5, xLoc - 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Green );
         canvas.redrawWindow( );
