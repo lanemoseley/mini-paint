@@ -8,33 +8,41 @@ class Canvas
 {
     struct character
     {
-        float color[ 3 ];
         char theCharacter;
         int x;
         int y;
+        float color[ 3 ];
 
-        bool operator== ( character &c );
+        character( const float Color[], char ch, int X, int Y ) : theCharacter( ch ), x( X ), y( Y )
+        {
+            for ( int i = 0; i < 3; ++i )
+                color[ i ] = Color[ i ];
+        }
     };
 
     struct rectangle
     {
-        float color[ 3 ];
-        char key;
         float x1;
         float x2;
         float y1;
         float y2;
+        float color[ 3 ];
 
-        bool operator== ( rectangle &r );
+        rectangle( const float Color[], float X1, float X2, float Y1, float Y2 ) : x1( X1 ), x2( X2 ), y1( Y1 )
+        {
+            for ( int i = 0; i < 3; ++i )
+                color[ i ] = Color[ i ];
+        }
     };
     
-    character thisChar;
-    rectangle thisRect;
     std::vector<character> characters;
     std::vector<rectangle> rectangles;
         
 public:
     Canvas( );
+    void addCharacter( char ch, int x, int y, const float color[ ] );
+    void addRectangle( float x1, float y1, float x2, float y2,
+                                  const float color[ ] );
     void clearCanvas( );
     void DrawCharacter( char ch, int x, int y, const float color[ ] );
     void DrawFilledRectangle( float x1, float y1, float x2, float y2,
