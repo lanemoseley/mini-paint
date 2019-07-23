@@ -29,6 +29,23 @@ void KeyboardEvent::doAction( Canvas &canvas )
         glutSwapBuffers( );
     }
     
+    // uppercase letters
+    else if ( key > 64 && key < 91 )
+    {
+        canvas.addCharacter( key, xLoc, glutGet( GLUT_WINDOW_HEIGHT ) - yLoc, Blue );
+        canvas.redrawWindow( );
+        glutSwapBuffers( );
+    }
+
+    // lowercase letters
+    else if ( key > 96 && key < 123)
+    {
+        canvas.addCharacter( key, xLoc, glutGet( GLUT_WINDOW_HEIGHT ) - yLoc, Red );
+        canvas.redrawWindow( );
+        glutSwapBuffers( );
+    }
+
+    // all other characters
     else
     {
         canvas.addCharacter( key, xLoc, glutGet( GLUT_WINDOW_HEIGHT ) - yLoc, White );
