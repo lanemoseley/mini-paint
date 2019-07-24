@@ -8,10 +8,13 @@
 #define ESCAPE_KEY 27
 #define BACKSPACE 8
 
+// color constants
 const float Blue[]  = { 0.0, 0.0, 1.0 };
 const float Green[] = { 0.0, 1.0, 0.0 };
+const float Orange[] = { 1.0, 0.5, 0.2 };
 const float Red[]   = { 1.0, 0.0, 0.0 };
 const float White[] = { 1.0, 1.0, 1.0 };
+const float Yellow[] = { 1.0, 1.0, 0.0 };
 
 class Event
 {

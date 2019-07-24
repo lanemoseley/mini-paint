@@ -4,6 +4,7 @@
 #include <GL/freeglut.h>
 #include "callback.h"
 
+// window position
 const int windowXPos = 100;
 const int windowYPos = 100;
 

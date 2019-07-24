@@ -1,4 +1,3 @@
-/// Adapted from sample code on class website
 #include "util.h"
 
 void utilityCentral( Event *event )

@@ -1,4 +1,3 @@
-/// Adapted from sample code on class website
 #include "event.h"
 
 Event::~Event( ) { }
@@ -11,17 +10,16 @@ void DisplayEvent::doAction( Canvas &canvas )
 
 InitEvent::InitEvent( int c, int r ) : columns( c ), rows( r ) { }
 void InitEvent::doAction( Canvas &canvas )
-{
-    glClear( GL_COLOR_BUFFER_BIT );
-}
+{ glClear( GL_COLOR_BUFFER_BIT ); }
 
-KeyboardEvent::KeyboardEvent( unsigned char k, int x, int y ) : key( k ),
-    xLoc( x ), yLoc( y ) { }
+KeyboardEvent::KeyboardEvent( unsigned char k, int x, int y ) : key( k ), xLoc( x ), yLoc( y ) { }
 void KeyboardEvent::doAction( Canvas &canvas )
 {
+    // escape closes the program
     if ( key == ESCAPE_KEY )
         glutLeaveMainLoop( );
     
+    // backspace clears the canvas
     if ( key == BACKSPACE )
     {
         glClear( GL_COLOR_BUFFER_BIT );
@@ -45,6 +43,14 @@ void KeyboardEvent::doAction( Canvas &canvas )
         glutSwapBuffers( );
     }
 
+    // numbers
+    else if ( key > 47 && key < 58 )
+    {
+        canvas.addCharacter( key, xLoc, glutGet( GLUT_WINDOW_HEIGHT ) - yLoc, Green );
+        canvas.redrawWindow( );
+        glutSwapBuffers( );
+    }
+
     // all other characters
     else
     {
@@ -54,33 +60,25 @@ void KeyboardEvent::doAction( Canvas &canvas )
     }
 }
 
-MouseClickEvent::MouseClickEvent( int b, int s, int x, int y ) :
-    button( b ), state( s ), xLoc( x ), yLoc( y ) { }
+MouseClickEvent::MouseClickEvent( int b, int s, int x, int y ) : button( b ), state( s ), xLoc( x ), yLoc( y ) { }
 void MouseClickEvent::doAction( Canvas &canvas )
 {
+    // draws small square on left click
     if ( button == GLUT_LEFT_BUTTON && state == GLUT_DOWN )
     {
         canvas.addRectangle( xLoc + 5,
                              glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 5, xLoc - 5,
-                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Red );
+                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Yellow );
         canvas.redrawWindow( );
         glutSwapBuffers( );
     }
     
+    // draws larger square on right click
     if ( button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN )
     {
-        canvas.addRectangle( xLoc + 5,
-                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 5, xLoc - 5,
-                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Blue );
-        canvas.redrawWindow( );
-        glutSwapBuffers( );
-    }
-    
-    if ( button == GLUT_MIDDLE_BUTTON && state == GLUT_DOWN )
-    {
-        canvas.addRectangle( xLoc + 5,
-                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 5, xLoc - 5,
-                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 5, Green );
+        canvas.addRectangle( xLoc + 15,
+                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc + 15, xLoc - 15,
+                             glutGet( GLUT_WINDOW_HEIGHT ) - yLoc - 15, Orange );
         canvas.redrawWindow( );
         glutSwapBuffers( );
     }
@@ -91,6 +89,7 @@ void MouseMoveEvent::doAction( Canvas &canvas )
 {
     std::stringstream ss;
     
+    // display mouse coordinates in title bar
     ss << "x = " << xLoc << " :: y = " << yLoc;
     glutSetWindowTitle( ss.str( ).c_str( ) );
 }

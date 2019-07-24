@@ -1,3 +1,0 @@
--fix issues in score file
--change key bindings
--change shapes & colors
