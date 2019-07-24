@@ -1,0 +1,13 @@
+This simple GUI program demonstrates basic usage of the GLUT library.
+
+To run:
+    make
+    ./main
+
+To clean up directory:
+    make clean
+
+Usage:
+    Left Click generates a small yellow square.
+    Right click generates a slightly larger orange square.
+    Letters are generated at the cursor location.
